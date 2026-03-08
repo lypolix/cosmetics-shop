@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>BeautyShop - Каталог</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header>
+  <hr>
+  <h1>BeautyShop</h1>
+  <hr>
+</header>
+
+<nav>
+  <ul class="menu">
+    <li><a href="./index.html">Главная</a></li>
+    <li><a href="./catalog.html">Каталог</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h2>Каталог товаров</h2>
+
+  <!-- Фильтр -->
+  <section class="filter">
+    <h3>Фильтр</h3>
+
+    <label for="filter-category">Категория:</label>
+    <select id="filter-category">
+      <option value="all">Все</option>
+      <option value="classic">Классика</option>
+      <option value="nude">Nude</option>
+      <option value="care">Уход</option>
+    </select>
+
+    <label for="filter-max-price">Макс. цена (₽):</label>
+    <input id="filter-max-price" type="number" min="0" placeholder="Напр. 500">
+
+    <button id="filter-apply" type="button">Применить</button>
+    <button id="filter-reset" type="button">Сбросить</button>
+  </section>
+
+  <!-- Товары -->
+  <section>
+    <div id="products" class="products"></div>
+  </section>
+
+  <!-- Корзина -->
+  <section class="cart">
+    <h3>Корзина</h3>
+
+    <div id="cart-info">
+      Товаров: <span id="cart-count">0</span> |
+      Сумма: <span id="cart-total">0</span> ₽
+    </div>
+
+    <ul id="cart-list"></ul>
+
+    <div class="cart-actions">
+      <button id="cart-clear" type="button">Очистить корзину</button>
+      <button id="cart-pay" type="button">Оплатить</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <hr>
+  <small>&copy; 2026 BeautyShop. Все права защищены.</small>
+</footer>
+
+<script src="./js/script.js"></script>
+</body>
+</html>

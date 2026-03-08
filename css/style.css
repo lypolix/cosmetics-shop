@@ -1,0 +1,231 @@
+/* Фон всего сайта */
+body {
+    background-color: rgb(253, 245, 250);
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+/* Меню */
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 10px 0;
+}
+
+.menu a {
+    color: rgb(180, 100, 150);
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: rgb(220, 120, 170);
+}
+
+/* Карточка товара */
+.product {
+    border: 1px solid rgb(200, 170, 190);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    background-color: rgb(255, 250, 253);
+    max-width: 400px;
+}
+
+.product img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto 10px;
+    border: 2px solid rgb(200, 150, 180);
+    border-radius: 5px;
+}
+
+.product h3 {
+    text-align: center;
+    color: rgb(100, 60, 120);
+    margin: 10px 0;
+}
+
+.price {
+    text-align: center;
+    color: rgb(120, 80, 120);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Кнопки */
+.btn-cart {
+    background-color: rgb(180, 100, 150);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.btn-cart:hover {
+    background-color: rgb(220, 120, 170);
+}
+
+.btn-details {
+    background-color: rgb(240, 230, 235);
+    color: rgb(100, 60, 120);
+    border: 1px solid rgb(200, 150, 180);
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.btn-details:hover {
+    background-color: rgb(220, 200, 215);
+}
+
+/* Подробности товара */
+.details {
+    background-color: rgb(245, 235, 245);
+    border-left: 3px solid rgb(180, 100, 150);
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgb(80, 60, 100);
+}
+
+/* Корзина */
+#cart-info {
+    background-color: rgb(240, 230, 235);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(100, 60, 120);
+}
+
+#cart-contents {
+    background-color: rgb(250, 240, 248);
+    border: 1px solid rgb(200, 170, 190);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    max-width: 400px;
+}
+
+#cart-list li {
+    color: rgb(60, 40, 80);
+    font-size: 15px;
+    margin: 5px 0;
+    list-style: disc;
+    padding-left: 5px;
+}
+
+/* Кнопка очистки */
+button[onclick="clearCart()"] {
+    background-color: rgb(200, 100, 100);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-left: 10px;
+}
+
+button[onclick="clearCart()"]:hover {
+    background-color: rgb(220, 120, 120);
+}
+
+/* Шапка */
+header h1 {
+    text-align: center;
+    color: rgb(120, 60, 140);
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: rgb(150, 130, 150);
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.product-card {
+  width: 260px;
+  border: 1px solid rgb(200, 170, 190);
+  border-radius: 10px;
+  padding: 12px;
+  background: rgb(255, 250, 253);
+}
+
+.product-card img {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 0 auto 10px;
+  border: 2px solid rgb(200, 150, 180);
+  border-radius: 6px;
+}
+
+.filter, .cart {
+  border: 1px solid rgb(220, 180, 200);
+  border-radius: 10px;
+  padding: 12px;
+  margin: 16px 0;
+  background: rgb(250, 240, 248);
+}
+
+.filter label {
+  margin-right: 6px;
+}
+
+.filter input, .filter select {
+  margin-right: 10px;
+  padding: 6px;
+}
+
+.cart-actions {
+  margin-top: 10px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.btn-remove, .btn-remove-all {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgb(200, 150, 180);
+  background: rgb(240, 230, 235);
+  cursor: pointer;
+}
+
+.btn-remove-all {
+  background: rgb(235, 210, 225);
+}
+
+.details {
+  margin-top: 10px;
+  padding: 10px;
+  background: rgb(245, 235, 245);
+  border-left: 3px solid rgb(180, 100, 150);
+  border-radius: 6px;
+}
