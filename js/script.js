@@ -1,6 +1,4 @@
-// ------------------------------
-// Глобальные данные (товары)
-// ------------------------------
+
 const products = [
   { id: 1, name: "Помада Ruby Red", price: 499, category: "classic", img: "./img/lipstick1.jpg" },
   { id: 2, name: "Помада Pink Dream", price: 349, category: "nude", img: "./img/lipstick2.jpg" },
@@ -8,15 +6,21 @@ const products = [
   { id: 4, name: "Бальзам Care Soft", price: 199, category: "care", img: "./img/lipstick2.jpg" }
 ];
 
-// ------------------------------
-// Глобальная корзина
-// cart хранит id товаров (можно повторять)
-// ------------------------------
+
 let cart = [];
 
-// ------------------------------
-// Вспомогательные функции (стрелочные)
-// ------------------------------
+const loadCart = () => {
+  const savedCart = localStorage.getItem('cart');
+  if (savedCart) {
+    cart = JSON.parse(savedCart);
+  }
+};
+
+const saveCart = () => {
+  localStorage.setItem('cart', JSON.stringify(cart));
+};
+
+
 const byId = (id) => document.getElementById(id);
 
 const formatRub = (value) => `${value} ₽`;
@@ -63,18 +67,17 @@ const renderProducts = (list) => {
   bindProductButtons();
 };
 
-// Кнопки товаров: "Добавить" и "Подробнее"
 const bindProductButtons = () => {
-  // добавить в корзину
   document.querySelectorAll(".btn-cart").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = Number(btn.dataset.id);
       cart.push(id);
+      saveCart();
       renderCart();
     });
   });
 
-  // подробнее
+
   document.querySelectorAll(".btn-details").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = Number(btn.dataset.id);
@@ -85,9 +88,6 @@ const bindProductButtons = () => {
   });
 };
 
-// ------------------------------
-// Корзина: отрисовка + удаление позиций
-// ------------------------------
 const renderCart = () => {
   const countEl = byId("cart-count");
   const totalEl = byId("cart-total");
@@ -128,12 +128,16 @@ const renderCart = () => {
 // Удаление из корзины
 const removeOneFromCart = (productId) => {
   const idx = cart.indexOf(productId);
-  if (idx !== -1) cart.splice(idx, 1);
-  renderCart();
+  if (idx !== -1) {
+    cart.splice(idx, 1);
+    saveCart();
+    renderCart();
+  }
 };
 
 const removeAllFromCart = (productId) => {
   cart = cart.filter(id => id !== productId);
+  saveCart();
   renderCart();
 };
 
@@ -154,6 +158,7 @@ const bindCartRemoveButtons = () => {
 // Очистка корзины
 const clearCart = () => {
   cart = [];
+  saveCart();
   renderCart();
 };
 
@@ -167,9 +172,6 @@ const pay = () => {
   clearCart();
 };
 
-// ------------------------------
-// Фильтрация товаров
-// ------------------------------
 const applyFilter = () => {
   const category = byId("filter-category")?.value || "all";
   const maxPriceRaw = byId("filter-max-price")?.value || "";
@@ -194,24 +196,19 @@ const resetFilter = () => {
   renderProducts(products);
 };
 
-// ------------------------------
-// Инициализация
-// ------------------------------
+
 const init = () => {
+  loadCart();  
   // товары
   renderProducts(products);
-
   // корзина
   renderCart();
-
   // фильтр
   byId("filter-apply")?.addEventListener("click", applyFilter);
   byId("filter-reset")?.addEventListener("click", resetFilter);
-
   // кнопки корзины
   byId("cart-clear")?.addEventListener("click", clearCart);
   byId("cart-pay")?.addEventListener("click", pay);
 };
 
-// запуск после загрузки DOM
 document.addEventListener("DOMContentLoaded", init);
